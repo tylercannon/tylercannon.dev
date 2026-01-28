@@ -10,7 +10,8 @@
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
-    "check": "biome check"
+    "check": "biome check",
+    "fix": "biome check --fix"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.157.16",

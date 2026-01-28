@@ -15,6 +15,8 @@ This is the source code for my personal website, built with [TanStack Start](htt
 │   │   ├── tech/            # Tech page components
 │   │   ├── GlobalBackground.tsx
 │   │   ├── Header.tsx
+│   │   ├── NotFound.tsx     # 404 default component
+│   │   ├── PageHeader.tsx   # Page header component
 │   │   └── Stars.tsx
 │   ├── data/                # Data files
 │   │   ├── career.ts        # Career milestones data
@@ -23,7 +25,6 @@ This is the source code for my personal website, built with [TanStack Start](htt
 │   ├── lib/                 # Utility functions
 │   ├── routes/              # File-based routes
 │   │   ├── __root.tsx       # Root layout
-│   │   ├── $404.tsx         # 404 page
 │   │   ├── career.tsx       # Career page
 │   │   ├── index.tsx        # Home page
 │   │   ├── projects.tsx     # Projects page
@@ -42,13 +43,14 @@ This is the source code for my personal website, built with [TanStack Start](htt
 | Command | Description |
 |---------|-------------|
 | `bun install` | Install dependencies |
-| `bun --bun run dev` | Start development server on port 4000 |
-| `bun --bun run build` | Build for production |
-| `bun --bun run preview` | Preview production build |
-| `bun --bun run test` | Run tests with Vitest |
-| `bun --bun run lint` | Lint code with Biome |
-| `bun --bun run format` | Format code with Biome |
-| `bun --bun run check` | Run Biome checks |
+| `bun run dev` | Start development server on port 4000 |
+| `bun run build` | Build for production |
+| `bun run preview` | Preview production build |
+| `bun run test` | Run tests with Vitest |
+| `bun run lint` | Lint code with Biome |
+| `bun run format` | Format code with Biome |
+| `bun run check` | Run Biome checks |
+| `bun run fix` | Run Biome checks and apply safe fixes |
 
 ## Tech Stack
 
