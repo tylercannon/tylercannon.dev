@@ -1,0 +1,16 @@
+{
+  "short_name": "Tyler Cannon",
+  "name": "Tyler Cannon | Personal Website",
+  "description": "Tyler Cannon's personal website",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#39ff14",
+  "background_color": "#050b10"
+}
