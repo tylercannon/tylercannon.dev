@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Telescope } from "lucide-react";
-import PageHeader from "@/components/PageHeader";
 import CareerTrajectory from "@/components/career/CareerTrajectory";
+import PageHeader from "@/components/PageHeader";
 
 const Career = () => {
     return (

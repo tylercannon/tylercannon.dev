@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { Cpu } from "lucide-react";
+import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
-import TechTelemetry from "@/components/tech/TechTelemetry";
 import TechPlanetarySystem from "@/components/tech/TechPlanetarySystem";
+import TechTelemetry from "@/components/tech/TechTelemetry";
 import type { TechDomain } from "@/data/tech";
 
 const TechStack = () => {

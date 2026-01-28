@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Rocket } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -42,4 +42,4 @@ const NotFound = () => {
     );
 };
 
-export const Route = createFileRoute("/$404")({ component: NotFound });
+export default NotFound;
