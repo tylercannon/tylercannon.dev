@@ -36,6 +36,7 @@ coverage/
 # OS files
 .DS_Store
 Thumbs.db
+*.dump
 
 # Logs
 *.log*

@@ -1,11 +1,12 @@
 {
-  "name": "portfolio",
+  "name": "tylercannon.dev",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 4000",
     "build": "vite build",
     "preview": "vite preview",
+    "start": "bun --bun run .output/server/index.mjs",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
