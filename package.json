@@ -6,7 +6,7 @@
     "dev": "vite dev --port 4000",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "bun --bun run .output/server/index.mjs",
+    "start": "bun run .output/server/index.mjs",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
