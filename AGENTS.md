@@ -14,7 +14,7 @@ Guidelines and conventions for AI agents working on this TypeScript project.
 ## Commands
 
 ```bash
-bun run dev      # Start dev server on port 4000
+bun run dev      # Start dev server on port 5173
 bun run build    # Production build
 bun run check    # Lint and format check (Biome)
 bun run test     # Run tests (Vitest)

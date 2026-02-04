@@ -43,7 +43,7 @@ This is the source code for my personal website, built with [TanStack Start](htt
 | Command | Description |
 |---------|-------------|
 | `bun install` | Install dependencies |
-| `bun run dev` | Start development server on port 4000 |
+| `bun run dev` | Start development server on port 5173 |
 | `bun run build` | Build for production |
 | `bun run preview` | Preview production build |
 | `bun run test` | Run tests with Vitest |

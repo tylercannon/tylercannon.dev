@@ -9,7 +9,7 @@ const ProfileOrbit = () => {
 
             <div
                 className={cn([
-                    "relative size-40 md:size-56 rounded-full p-1",
+                    "relative size-40 md:size-56 rounded-full p-0.5",
                     "bg-radial from-neon-green/50 to-transparent",
                 ])}
             >
