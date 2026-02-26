@@ -19,7 +19,7 @@ const ProfileOrbit = () => {
                         className="size-full object-cover opacity-80"
                         height={224}
                         loading="lazy"
-                        src="https://github.com/tylercannon.png"
+                        src="/me.jpg"
                         width={224}
                     />
                 </div>
