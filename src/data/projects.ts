@@ -26,7 +26,7 @@ export const statuses: Record<Project["status"], { className: string; label: str
         className: "bg-blue-500/20 text-blue-400 border-blue-500/30",
         label: "Planned",
     },
-} as const;
+};
 
 export const projects: Project[] = [
     {

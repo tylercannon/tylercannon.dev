@@ -1,6 +1,12 @@
 import { Link, type ValidateLinkOptions } from "@tanstack/react-router";
 import { Menu, Rocket, X } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 const navLinks: { label: string; to: ValidateLinkOptions["to"] }[] = [
@@ -11,42 +17,7 @@ const navLinks: { label: string; to: ValidateLinkOptions["to"] }[] = [
 ];
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
-    const navRef = useRef<HTMLElement>(null);
-
-    const toggleMenu = () => {
-        if (isOpen) {
-            setIsClosing(true);
-            setTimeout(() => {
-                setIsOpen(false);
-                setIsClosing(false);
-            }, 200);
-        } else {
-            setIsOpen(true);
-        }
-    };
-
-    const closeMenu = useCallback(() => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setIsOpen(false);
-            setIsClosing(false);
-        }, 200);
-    }, []);
-
-    useEffect(() => {
-        if (!isOpen) return;
-
-        const handleClickOutside = (event: MouseEvent) => {
-            if (navRef.current && !navRef.current.contains(event.target as Node)) {
-                closeMenu();
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen, closeMenu]);
+    const [open, setOpen] = useState(false);
 
     return (
         <header
@@ -61,10 +32,13 @@ const Header = () => {
                     "border border-white/10 rounded-full p-1.5",
                     "transition-all duration-300 hover:border-neon-green/30 pointer-events-auto group/nav",
                 )}
-                ref={navRef}
             >
                 <div className="flex items-center justify-between">
-                    <Link className="flex items-center gap-3 pl-1 pr-4 group/logo" onClick={closeMenu} to="/">
+                    <Link
+                        className="flex items-center gap-3 pl-1 pr-4 group/logo"
+                        onClick={() => setOpen(false)}
+                        to="/"
+                    >
                         <div
                             className={cn(
                                 "flex items-center justify-center size-10",
@@ -80,52 +54,51 @@ const Header = () => {
                         </span>
                     </Link>
 
-                    <button
-                        aria-expanded={isOpen}
-                        aria-label="Toggle menu"
-                        className={cn(
-                            "flex items-center justify-center size-10",
-                            "border border-white/10 rounded-full",
-                            "transition-all duration-300",
-                            "focus-visible:ring-neon-green focus-visible:ring-2 focus-visible:outline-none",
-                            "focus-visible:ring-offset-black focus-visible:ring-offset-2",
-                            isOpen
-                                ? "bg-neon-green text-black border-neon-green"
-                                : "bg-white/5 text-white hover:bg-neon-green hover:text-black hover:border-neon-green",
-                        )}
-                        onClick={toggleMenu}
-                        type="button"
-                    >
-                        {isOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
-                    </button>
-                </div>
-                {isOpen && (
-                    <div
-                        className={cn(
-                            "absolute top-full left-0 right-0 p-1.5 mt-3",
-                            "bg-black backdrop-blur-2xl shadow-2xl overflow-hidden",
-                            "border border-white/10 rounded-2xl",
-                            "origin-top duration-200",
-                            isClosing ? "animate-out fade-out zoom-out" : "animate-in fade-in zoom-in",
-                        )}
-                    >
-                        <div className="flex flex-col gap-1">
+                    <DropdownMenu onOpenChange={setOpen} open={open}>
+                        <DropdownMenuTrigger
+                            className={cn(
+                                "flex items-center justify-center size-10",
+                                "border border-white/10 rounded-full",
+                                "transition-all duration-300",
+                                "focus-visible:ring-neon-green focus-visible:ring-2 focus-visible:outline-none",
+                                "focus-visible:ring-offset-black focus-visible:ring-offset-2",
+                                open
+                                    ? "bg-neon-green text-black border-neon-green"
+                                    : "bg-white/5 text-white hover:bg-neon-green hover:text-black hover:border-neon-green",
+                            )}
+                        >
+                            {open ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                            align="end"
+                            className={cn(
+                                "w-67.5 p-1.5 mt-3",
+                                "bg-black backdrop-blur-2xl shadow-2xl",
+                                "border border-white/10 rounded-2xl",
+                            )}
+                        >
                             {navLinks.map(link => (
-                                <Link
-                                    activeProps={{
-                                        className: "text-neon-green bg-white/5 font-semibold",
-                                    }}
+                                <DropdownMenuItem
                                     className={cn(
                                         "flex items-center justify-between",
-                                        "px-4 py-3 rounded-xl transition-all duration-200",
-                                        "text-sm group/link",
+                                        "px-4 py-3 rounded-xl",
+                                        "text-sm group/link cursor-pointer",
+                                        "focus:bg-white/5 focus:text-neon-green",
                                     )}
-                                    inactiveProps={{
-                                        className: "text-white hover:text-neon-green hover:bg-white/5 font-medium",
-                                    }}
                                     key={link.to}
-                                    onClick={closeMenu}
-                                    to={link.to}
+                                    render={
+                                        <Link
+                                            activeProps={{
+                                                className: "text-neon-green bg-white/5 font-semibold",
+                                            }}
+                                            inactiveProps={{
+                                                className:
+                                                    "text-white font-medium hover:text-neon-green hover:bg-white/5",
+                                            }}
+                                            onClick={() => setOpen(false)}
+                                            to={link.to}
+                                        />
+                                    }
                                 >
                                     {link.label}
                                     <div
@@ -135,11 +108,11 @@ const Header = () => {
                                             "in-data-[status='active']:scale-100 group-hover/link:scale-100",
                                         )}
                                     />
-                                </Link>
+                                </DropdownMenuItem>
                             ))}
-                        </div>
-                    </div>
-                )}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             </nav>
         </header>
     );

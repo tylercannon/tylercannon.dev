@@ -1,3 +1,4 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { milestones } from "@/data/career";
 import { cn } from "@/lib/utils";
 
@@ -26,28 +27,32 @@ const CareerTrajectory = () => {
                         <div className={cn("w-0.5 grow bg-white/10", index === milestones.length - 1 && "invisible")} />
                     </div>
                     <div className="flex-1 py-6">
-                        <div
+                        <Card
                             className={cn(
-                                "bg-white/3 border rounded-2xl p-6 backdrop-blur-sm",
+                                "bg-white/3 border rounded-2xl backdrop-blur-sm",
                                 "hover:bg-white/5 transition-colors duration-300",
                                 milestone.isCurrent ? "border-neon-green shadow-neon" : "border-white/10",
                             )}
                         >
-                            {milestone.isCurrent && (
-                                <div className="text-neon-green text-[10px] font-bold tracking-widest uppercase mb-2">
-                                    Current Role
+                            <CardHeader>
+                                {milestone.isCurrent ? (
+                                    <span className="text-neon-green text-[10px] font-bold tracking-widest uppercase">
+                                        Current Role
+                                    </span>
+                                ) : null}
+                                <CardTitle className="text-white text-xl font-bold">{milestone.title}</CardTitle>
+                                <div className="text-muted-foreground text-sm">
+                                    {milestone.company} • {milestone.period}
                                 </div>
-                            )}
-                            <h3 className="text-white text-xl font-bold mb-1">{milestone.title}</h3>
-                            <div className="text-muted-foreground text-sm mb-4">
-                                {milestone.company} • {milestone.period}
-                            </div>
-                            <ul className="pl-4 list-disc space-y-2 text-muted-foreground/80 text-sm leading-relaxed">
-                                {milestone.details.map(detail => (
-                                    <li key={detail}>{detail}</li>
-                                ))}
-                            </ul>
-                        </div>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="pl-4 list-disc space-y-2 text-muted-foreground/80 text-sm leading-relaxed">
+                                    {milestone.details.map(detail => (
+                                        <li key={detail}>{detail}</li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             ))}

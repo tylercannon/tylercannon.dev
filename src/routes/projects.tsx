@@ -12,4 +12,9 @@ const Projects = () => {
     );
 };
 
-export const Route = createFileRoute("/projects")({ component: Projects });
+export const Route = createFileRoute("/projects")({
+    component: Projects,
+    head: () => ({
+        meta: [{ title: "Projects | tylercannon.dev" }],
+    }),
+});

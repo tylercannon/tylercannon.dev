@@ -8,12 +8,14 @@
     "preview": "bun --bun vite preview",
     "start": "bun run .output/server/index.mjs",
     "test": "vitest run",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check",
-    "fix": "biome check --fix"
+    "format": "bun --bun biome format",
+    "lint": "bun --bun biome lint",
+    "check": "bun --bun biome check",
+    "fix": "bun --bun biome check --fix"
   },
   "dependencies": {
+    "@base-ui/react": "^1.2.0",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
     "@tanstack/react-router": "^1.161.3",
     "@tanstack/react-start": "^1.161.3",
     "@tanstack/react-store": "^0.9.1",
