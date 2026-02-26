@@ -56,7 +56,14 @@ const Stars = ({ starColor = "#fff", starCount = 400 }: StarsProps) => {
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
-        const resizeObserver = new ResizeObserver(resizeCanvas);
+        let resizeTimeout: ReturnType<typeof setTimeout>;
+
+        const debouncedResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resizeCanvas, 500);
+        };
+
+        const resizeObserver = new ResizeObserver(debouncedResize);
         resizeObserver.observe(canvas);
         resizeCanvas();
 
@@ -116,14 +123,30 @@ const Stars = ({ starColor = "#fff", starCount = 400 }: StarsProps) => {
                 ctx.fillRect(projectedX - halfCore, projectedY - halfCore, coreSize, coreSize);
             }
 
-            animationFrameId = requestAnimationFrame(render);
+            if (!prefersReducedMotion) {
+                animationFrameId = requestAnimationFrame(render);
+            }
         };
 
         render();
 
+        const handleVisibilityChange = () => {
+            if (prefersReducedMotion) return;
+
+            if (document.hidden) {
+                cancelAnimationFrame(animationFrameId);
+            } else {
+                animationFrameId = requestAnimationFrame(render);
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
         return () => {
             resizeObserver.disconnect();
             cancelAnimationFrame(animationFrameId);
+            clearTimeout(resizeTimeout);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
     }, [starColor, starCount]);
 
