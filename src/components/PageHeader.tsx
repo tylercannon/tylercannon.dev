@@ -15,7 +15,7 @@ const PageHeader = ({ icon: Icon, sector, title }: PageHeaderProps) => {
                     Sector: {sector}
                 </span>
             </div>
-            <h1 className="text-neon-green text-4xl font-bold font-heading">{title}</h1>
+            <h1 className="text-neon-green text-4xl font-bold">{title}</h1>
         </header>
     );
 };

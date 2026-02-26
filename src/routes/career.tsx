@@ -12,4 +12,9 @@ const Career = () => {
     );
 };
 
-export const Route = createFileRoute("/career")({ component: Career });
+export const Route = createFileRoute("/career")({
+    component: Career,
+    head: () => ({
+        meta: [{ title: "Career | tylercannon.dev" }],
+    }),
+});

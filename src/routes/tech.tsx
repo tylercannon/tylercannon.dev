@@ -18,4 +18,9 @@ const TechStack = () => {
     );
 };
 
-export const Route = createFileRoute("/tech")({ component: TechStack });
+export const Route = createFileRoute("/tech")({
+    component: TechStack,
+    head: () => ({
+        meta: [{ title: "Tech | tylercannon.dev" }],
+    }),
+});

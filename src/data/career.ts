@@ -1,11 +1,11 @@
-import { Moon, Satellite, Terminal, Zap } from "lucide-react";
+import { type LucideIcon, Moon, Satellite, Terminal, Zap } from "lucide-react";
 
 export type Milestone = {
     title: string;
     company: string;
     period: string;
     details: string[];
-    icon: React.ElementType;
+    icon: LucideIcon;
     isCurrent?: boolean;
 };
 

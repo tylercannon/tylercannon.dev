@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Rocket } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const NotFound = () => {
@@ -29,8 +30,9 @@ const NotFound = () => {
                 </div>
                 <Link
                     className={cn(
-                        "px-8 py-3 bg-cosmic-void",
-                        "border-neon-green border rounded-lg",
+                        buttonVariants({ variant: "outline" }),
+                        "px-8 py-3 h-auto rounded-lg",
+                        "bg-cosmic-void border-neon-green",
                         "hover:bg-neon-green hover:text-cosmic-depth",
                     )}
                     to="/"

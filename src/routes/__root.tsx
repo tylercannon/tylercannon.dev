@@ -1,10 +1,10 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import GlobalBackground from "@/components/GlobalBackground";
+import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
-import GlobalBackground from "../components/GlobalBackground";
-import Header from "../components/Header";
-import appCss from "../styles.css?url";
+import appCss from "@/styles.css?url";
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -46,12 +46,6 @@ export const Route = createRootRoute({
         links: [
             { href: "/favicon.svg", rel: "icon", type: "image/svg+xml" },
             { href: appCss, rel: "stylesheet" },
-            { href: "https://fonts.googleapis.com", rel: "preconnect" },
-            { crossOrigin: "anonymous", href: "https://fonts.gstatic.com", rel: "preconnect" },
-            {
-                href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap",
-                rel: "stylesheet",
-            },
         ],
         meta: [
             { charSet: "utf-8" },
