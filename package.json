@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
-    "@tailwindcss/vite": "^4.2.0",
+    "@tailwindcss/vite": "^4.2.1",
     "@tanstack/devtools-event-client": "^0.4.0",
     "@tanstack/devtools-vite": "^0.5.1",
     "@tanstack/react-devtools": "^0.9.6",
