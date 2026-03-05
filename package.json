@@ -31,7 +31,7 @@
     "@biomejs/biome": "2.4.4",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/devtools-event-client": "^0.4.0",
-    "@tanstack/devtools-vite": "^0.5.2",
+    "@tanstack/devtools-vite": "^0.5.3",
     "@tanstack/react-devtools": "^0.9.6",
     "@tanstack/react-router-devtools": "^1.163.3",
     "@tanstack/router-plugin": "^1.164.0",
